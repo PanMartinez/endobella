@@ -6,10 +6,52 @@ from django_ckeditor_5.fields import CKEditor5Field
 from taggit.managers import TaggableManager
 
 from endobella.auth.models import User
-from endobella.common.models import BaseModel, SeoGaioBase
+from endobella.common.models import BaseModel
 
 
-class Article(BaseModel, SeoGaioBase):
+class SeoGaioBase(models.Model):
+    meta_title = models.CharField(
+        max_length=70,
+        blank=True,
+        help_text=_(
+            "Custom meta title for SEO (max 70 characters). Leave blank to use the default title."
+        ),
+    )
+    meta_description = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text=_("Custom meta description for SEO (max 160 characters)."),
+    )
+    focus_keyword = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text=_("Main keyword or phrase for this content."),
+    )
+    canonical_url = models.URLField(
+        blank=True, help_text=_("Canonical URL to prevent duplicate content issues.")
+    )
+    no_index = models.BooleanField(
+        default=False, help_text=_("Prevent search engines from indexing this page.")
+    )
+    content_abstract = models.TextField(
+        max_length=500,
+        blank=True,
+        help_text=_(
+            "A factual, concise summary of the content for AI models (max 500 characters)."
+        ),
+    )
+    key_questions_answered = models.TextField(
+        blank=True,
+        help_text=_(
+            "List key questions this content answers, one per line. Used for FAQ snippets and conversational AI."
+        ),
+    )
+
+    class Meta:
+        abstract = True
+
+
+class Article(BaseModel):
     class Category(models.TextChoices):
         KNOWLEDGE_BASE = "knowledge_base", _("Knowledlege Base")
         WELL_BEING = "well_being", _("Well Being")
@@ -57,6 +99,44 @@ class Article(BaseModel, SeoGaioBase):
 
     show_table_of_contents = models.BooleanField(
         default=True, help_text=_("Display auto-generated table of contents")
+    )
+
+    # SEO & GAIO meta Fields
+    meta_title = models.CharField(
+        max_length=70,
+        blank=True,
+        help_text=_(
+            "Custom meta title for SEO (max 70 characters). Leave blank to use the default title."
+        ),
+    )
+    meta_description = models.CharField(
+        max_length=160,
+        blank=True,
+        help_text=_("Custom meta description for SEO (max 160 characters)."),
+    )
+    focus_keyword = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text=_("Main keyword or phrase for this content."),
+    )
+    canonical_url = models.URLField(
+        blank=True, help_text=_("Canonical URL to prevent duplicate content issues.")
+    )
+    no_index = models.BooleanField(
+        default=False, help_text=_("Prevent search engines from indexing this page.")
+    )
+    content_abstract = models.TextField(
+        max_length=500,
+        blank=True,
+        help_text=_(
+            "A factual, concise summary of the content for AI models (max 500 characters)."
+        ),
+    )
+    key_questions_answered = models.TextField(
+        blank=True,
+        help_text=_(
+            "List key questions this content answers, one per line. Used for FAQ snippets and conversational AI."
+        ),
     )
 
     class Meta:
