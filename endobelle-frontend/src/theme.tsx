@@ -10,16 +10,49 @@ const font = Mulish({
 
 const theme = createTheme(
   {
-    colorSchemes: { light: true, dark: true },
-    palette: {
-      primary: {
-        main: '#000000',
+    colorSchemes:
+      {
+        light:
+          {
+            palette: {
+              primary: {
+                main: '#000000',
+              },
+              secondary: {
+                main: '#ffffff',
+              },
+              background: {
+                default: '#ffffff',
+                paper: '#fcf4f4',
+              },
+              text: {
+                primary: '#000000',
+                secondary: '#333333',
+              },
+            }
+          },
+
+        dark:
+          {
+            palette: {
+              primary: {
+                main: '#ffffff',
+              },
+              secondary: {
+                main: '#000000',
+              },
+              background: {
+                default: '#121212',
+                paper: '#412828',
+              },
+              text: {
+                primary: '#ffffff',
+                secondary: '#cccccc',
+              },
+            },
+          },
       },
-      secondary: {
-        main: '#ffffff',
-      },
-    },
-    typography: {
+        typography: {
       fontFamily: font.style.fontFamily,
     },
   },
