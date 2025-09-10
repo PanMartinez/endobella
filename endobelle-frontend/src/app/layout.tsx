@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@mui/material/styles";
-import ModeSwitch from "@/components/ModeSwitch";
 import Content from "@/components/layout/Content";
 import Children from "@/components/layout/Children";
 import Footer from "@/components/layout/Footer";
+import Header from "@/components/layout/Header";
 import theme from '@/theme';
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme}>
             <Content>
               <CssBaseline />
-              <ModeSwitch />
+              <Header />
               <Children>
                 { children }
               </Children>

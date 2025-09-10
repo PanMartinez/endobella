@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container} from "@mui/material";
+import Container from "@mui/material/Container";
 
 
 export default function Children({children}: { children: React.ReactNode}) {

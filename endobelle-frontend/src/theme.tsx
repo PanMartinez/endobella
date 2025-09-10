@@ -23,7 +23,7 @@ const theme = createTheme(
               },
               background: {
                 default: '#ffffff',
-                paper: '#fcf4f4',
+                paper: '#fff6d2',
               },
               text: {
                 primary: '#000000',
@@ -43,7 +43,7 @@ const theme = createTheme(
               },
               background: {
                 default: '#121212',
-                paper: '#412828',
+                paper: '#3b3a17',
               },
               text: {
                 primary: '#ffffff',
